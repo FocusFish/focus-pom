@@ -24,8 +24,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses
     <!-- ================================================================ -->
     <url>${focus-pom.public.base.site.url}/${project.artifactId}</url>
     <scm>
-        <connection>${scm.connection}</connection>
-        <tag>HEAD</tag>
+        <url>https://github.com/FocusFish/focus-pom</url>
+        <connection>scm:git:https://github.com/FocusFish/focus-pom.git</connection>
+	    <tag>HEAD</tag>
     </scm>
 
     <!-- ================= -->
@@ -37,6 +38,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses
             <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
         </license>
     </licenses>
+
 
     <!-- ### END Shared setting -->
 
@@ -76,9 +78,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses
     <!--Other-->
     <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
 
-
-    <scm.connection>scm:git:https://github.com/FocusFish/focus-pom.git</scm.connection>
-    <scm.url>scm:git:https://github.com/FocusFish/focus-pom.git</scm.url>
   </properties>
 
 </project>
