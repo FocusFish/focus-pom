@@ -521,9 +521,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <profile>
             <id>enforce-encoding</id>
             <activation>
-                <!-- To disable profile, define property -Dfocus-pom.enforce.encoding.version.disabled=true -->
+                <!-- To enable profile, define property -Dfocus-pom.enforce.encoding.version.enable=true -->
                 <property>
-                    <name>!focus-pom.enforce.encoding.version.disabled</name>
+                    <name>focus-pom.enforce.encoding.version.enable</name>
                 </property>
             </activation>
             <build>
