@@ -247,9 +247,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${focus-pom.maven.surefire.plugin.version}</version>
-                    <configuration>
-                        <argLine>@{surefireArgLine}</argLine>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -593,6 +590,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+	                    <configuration>
+	                        <argLine>@{surefireArgLine}</argLine>
+	                    </configuration>                        
                     </plugin>
                 </plugins>
             </build>
