@@ -67,7 +67,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
         <!-- Set compiler source and target versions (m-compiler-p) -->
-        <maven.compiler.target>${focus.java.version}</maven.compiler.target>
+        <maven.compiler.target>${focus-pom.java.version}</maven.compiler.target>
         <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
 
         <!-- Set compiler tveo be more verbose (m-compiler-p) -->
