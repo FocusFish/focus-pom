@@ -15,7 +15,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
     <modelVersion>4.0.0</modelVersion>
     <groupId>fish.focus.maven</groupId>
     <artifactId>focus-pom</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <!-- ================================================================ -->
@@ -735,7 +735,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 							<reportSet>
 								<id>aggregate</id>
 								<configuration>
-									<additionalparam></additionalparam>																	
+									<additionalparam />																	
 								</configuration>
 								<reports>
 									<report>javadoc-no-fork</report>
