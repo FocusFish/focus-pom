@@ -151,6 +151,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.enforcer.plugin.extra.rules.version>1.0-beta-6</focus-pom.maven.enforcer.plugin.extra.rules.version>
     	<focus-pom.maven.site.plugin.wagon.git.version>2.0.4</focus-pom.maven.site.plugin.wagon.git.version>
         <focus-pom.site.github.plugin.version>0.12</focus-pom.site.github.plugin.version>
+        <focus-pom.maven.javadoc.plugin.apiviz.version>1.3.2.GA</focus-pom.maven.javadoc.plugin.apiviz.version>
         
         <!-- Other non default maven version-->
         <focus-pom.jacoco.plugin.version>0.7.9</focus-pom.jacoco.plugin.version>
@@ -695,6 +696,54 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                             </reportSet>
                         </reportSets>
                     </plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>${focus-pom.maven.javadoc.plugin.version}</version>
+						<configuration>
+							<includeDependencySources>false</includeDependencySources>
+							<includeTransitiveDependencySources>false</includeTransitiveDependencySources>
+							<detectOfflineLinks>true</detectOfflineLinks>
+							<doclet>org.jboss.apiviz.APIviz</doclet>
+							<docletArtifacts>
+								<docletArtifact>
+									<groupId>org.jboss.apiviz</groupId>
+									<artifactId>apiviz</artifactId>
+									<version>${focus-pom.maven.javadoc.plugin.apiviz.version}</version>
+								</docletArtifact>
+							</docletArtifacts>
+							<useStandardDocletOptions>true</useStandardDocletOptions>
+							<charset>UTF-8</charset>
+							<encoding>UTF-8</encoding>
+							<source>${java.version}</source>
+							<docencoding>UTF-8</docencoding>
+							<breakiterator>true</breakiterator>
+							<version>true</version>
+							<author>true</author>
+							<keywords>true</keywords>
+							<failOnError>false</failOnError>
+							<additionalparam>-sourceclasspath ${project.build.outputDirectory}</additionalparam>
+						</configuration>
+						<reportSets>
+							<reportSet>
+								<id>default</id>
+								<reports>
+									<report>javadoc-no-fork</report>
+									<report>test-javadoc-no-fork</report>
+								</reports>
+							</reportSet>
+							<reportSet>
+								<id>aggregate</id>
+								<configuration>
+									<additionalparam></additionalparam>																	
+								</configuration>
+								<reports>
+									<report>javadoc-no-fork</report>
+									<report>test-javadoc-no-fork</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>                    
                 </plugins>
             </reporting>
         </profile>         
