@@ -37,7 +37,19 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
         </license>
     </licenses>
+    
+    <organization>
+        <name>${focus-pom.organizationName}</name>
+        <url>${focus-pom.organizationUrl}</url>
+    </organization>
 
+    <issueManagement>
+        <url>${focus-pom.issueManagementUrl}</url>
+    </issueManagement>
+
+    <ciManagement>
+        <url>${focus-pom.ciManagementUrl}</url>
+    </ciManagement>
 
     <!-- ### END Shared setting -->
 
@@ -148,7 +160,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- # Maven plugin deps-->
         <focus-pom.maven.release.plugin.scm.provider.git.version>1.9.5</focus-pom.maven.release.plugin.scm.provider.git.version>      
         <focus-pom.maven.enforcer.plugin.extra.rules.version>1.0-beta-6</focus-pom.maven.enforcer.plugin.extra.rules.version>
-    	<focus-pom.maven.site.plugin.wagon.git.version>2.0.4</focus-pom.maven.site.plugin.wagon.git.version>
+        <focus-pom.maven.site.plugin.wagon.git.version>2.0.4</focus-pom.maven.site.plugin.wagon.git.version>
         <focus-pom.site.github.plugin.version>0.12</focus-pom.site.github.plugin.version>
         
         <!-- Other non default maven version-->
@@ -162,6 +174,12 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- ========================= -->
         <!-- Focus specific properties -->
         <!-- ========================= -->
+        <!-- Corporate projects information (do not overwrite) -->
+		<focus-pom.organizationName>FOCUS (Fisheries Open Source Community Software)</focus-pom.organizationName>
+        <focus-pom.organizationUrl>http://www.focus.fish</focus-pom.organizationUrl>
+		<focus-pom.ciManagementUrl>https://jenkins.focus.fish</focus-pom.ciManagementUrl>
+		<focus-pom.issueManagementUrl>https://focusfish.atlassian.net/</focus-pom.issueManagementUrl>
+        
         <!--Enforce (and use)-->
         <focus-pom.java.version>1.7</focus-pom.java.version>
         <focus-pom.maven.version>3.2.0</focus-pom.maven.version>
@@ -188,6 +206,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!--Other-->
         <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
+        
         
         <!-- =================================================== -->
         <!-- IDE specific properties                             -->
@@ -242,11 +261,11 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         <generateSitemap>true</generateSitemap>
                     </configuration>
                     <dependencies>
-	                    <dependency>
-			              <groupId>net.trajano.wagon</groupId>
-			              <artifactId>wagon-git</artifactId>
-			              <version>${focus-pom.maven.site.plugin.wagon.git.version}</version>
-			            </dependency>                    
+                        <dependency>
+                            <groupId>net.trajano.wagon</groupId>
+                            <artifactId>wagon-git</artifactId>
+                            <version>${focus-pom.maven.site.plugin.wagon.git.version}</version>
+                        </dependency>                    
                     </dependencies>                    
                 </plugin>                
                 <plugin>
@@ -429,18 +448,18 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             </plugins>
         </pluginManagement>
         <plugins>
-			<plugin>
-				<artifactId>maven-site-plugin</artifactId>
-				<executions>
-					<execution>
-						<inherited>false</inherited>
-						<id>attach-descriptor</id>
-						<goals>
-							<goal>attach-descriptor</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <inherited>false</inherited>
+                        <id>attach-descriptor</id>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     
@@ -594,9 +613,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-	                    <configuration>
-	                        <argLine>@{surefireArgLine}</argLine>
-	                    </configuration>                        
+                        <configuration>
+                            <argLine>@{surefireArgLine}</argLine>
+                        </configuration>                        
                     </plugin>
                 </plugins>
             </build>
