@@ -103,7 +103,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!-- Sonar settings (m-sonar-p) -->
         <sonar.host.url>${focus-pom.sonarUrl}</sonar.host.url>
-        <sonar.language>java</sonar.language>
         <sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
         <sonar.java.target>${maven.compiler.target}</sonar.java.target>
         <sonar.java.source>${maven.compiler.source}</sonar.java.source>
