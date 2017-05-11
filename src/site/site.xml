@@ -22,8 +22,8 @@
 			<item name="PostgreSQL" href="http://www.postgresql.org/" />
 		</links>
 
-		<menu ref="reports" />
-		<menu ref="parent" />
-		<menu ref="modules" />
+		<menu ref="reports" inherit="top" />
+		<menu ref="parent" inherit="top" />
+		<menu ref="modules" inherit="top" />
 	</body>
 </project>
