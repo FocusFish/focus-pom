@@ -9,14 +9,13 @@ later version. The IFDM Suite is distributed in ~ the hope that it will be
 useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
 or ~ FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License 
 for more details. You should have received a ~ copy of the GNU General Public 
-License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses 
-/>. -->
+License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>fish.focus.maven</groupId>
     <artifactId>focus-pom</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.6</version>
     <packaging>pom</packaging>
     
     <!-- ================================================================ -->
@@ -26,7 +25,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses
     <scm>
         <url>https://github.com/FocusFish/focus-pom</url>
         <connection>scm:git:https://github.com/FocusFish/focus-pom.git</connection>
-	    <tag>HEAD</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <!-- ================= -->
@@ -38,7 +37,19 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses
             <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
         </license>
     </licenses>
+    
+    <organization>
+        <name>${focus-pom.organizationName}</name>
+        <url>${focus-pom.organizationUrl}</url>
+    </organization>
 
+    <issueManagement>
+        <url>${focus-pom.issueManagementUrl}</url>
+    </issueManagement>
+
+    <ciManagement>
+        <url>${focus-pom.ciManagementUrl}</url>
+    </ciManagement>
 
     <!-- ### END Shared setting -->
 
@@ -53,31 +64,744 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses
             <name>${focus-pom.distribution.snapshot.name}</name>
             <url>${focus-pom.distribution.snapshot.url}</url>
         </snapshotRepository>
+        <!-- Stage intentionally left out!-->
     </distributionManagement>
 
-  <properties>
-      
-    <!--Site-->
-    <focus-pom.public.base.site.url>https://unionvms.github.io</focus-pom.public.base.site.url>
-    <focus-pom.public.context.site.url>${project.artifactId}</focus-pom.public.context.site.url>
+    <properties>
+        <!-- ================= -->
+        <!-- Maven default properties -->
+        <!-- ================= -->
+        <!-- Release plugin -->
+        <project.scm.id>github</project.scm.id>
+        
+        <!-- Set default encoding to UTF-8 (most plugins) -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 
-    <!--Distribution-->
-    <focus-pom.distribution.release.id>focus-releases</focus-pom.distribution.release.id>
-    <focus-pom.distribution.release.name>UnionVms Repository</focus-pom.distribution.release.name>
-    <focus-pom.distribution.release.url>http://nexus.focus.fish/nexus/content/repositories/releases/</focus-pom.distribution.release.url>
-    <focus-pom.distribution.snapshot.id>focus-snapshots</focus-pom.distribution.snapshot.id>
-    <focus-pom.distribution.snapshot.name>UnionVms Snapshot Repository</focus-pom.distribution.snapshot.name>
-    <focus-pom.distribution.snapshot.url>http://nexus.focus.fish/nexus/content/repositories/snapshots</focus-pom.distribution.snapshot.url>
-    <focus-pom.distribution.stage.id>focus-stages</focus-pom.distribution.stage.id>
-    <focus-pom.distribution.stage.name>UnionVms Stage Repository</focus-pom.distribution.stage.name>
-    <focus-pom.distribution.stage.url>http://nexus.focus.fish/nexus/repository/stages</focus-pom.distribution.stage.url>
+        <!-- Set compiler source and target versions (m-compiler-p) -->
+        <maven.compiler.target>${focus-pom.java.version}</maven.compiler.target>
+        <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
 
-    <!--Encoding-->
-    <focus-pom.encoding.properties>ISO-8859-1</focus-pom.encoding.properties>
-    <focus-pom.encoding.xml>UTF-8</focus-pom.encoding.xml>
-    <!--Other-->
-    <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
+        <!-- Set compiler tveo be more verbose (m-compiler-p) -->
+        <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+        <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
 
-  </properties>
+        <!-- Disable report aggregation (m-jxr-p, m-pmd-p, m-surefire-report-p) -->
+        <aggregate>false</aggregate>
 
+        <!-- Disable report when there is no tests (m-surefire-p) -->
+        <alwaysGenerateSurefireReport>false</alwaysGenerateSurefireReport>
+
+        <!-- Shut off non-error and non-warning messages, making them easier to view (m-javadoc-p) -->
+        <quiet>true</quiet>
+
+        <!-- Disable links detection between modules, it is too slow (m-javadoc-p) -->
+        <detectOfflineLinks>false</detectOfflineLinks>
+
+        <!-- Set target JDK to analyze based on (m-pmd-p) -->
+        <targetJdk>${maven.compiler.target}</targetJdk>
+
+        <!-- Speed-up site generation (m-project-info-reports-p) -->
+        <dependency.locations.enabled>false</dependency.locations.enabled>
+
+        <!-- A comma separated list of locales (m-site-p) -->
+        <locales>en</locales>
+
+        <!-- Exclude build-number.txt file created by Jenkins in the project directory (m-release-p) -->
+        <checkModificationExcludeList>build-number.txt</checkModificationExcludeList>
+		
+        <!-- For multimodule build, if the build fails, none of the reactor projects is deployed (m-install-p, m-deploy-p) -->
+        <installAtEnd>true</installAtEnd>
+
+        <!-- Sonar settings (m-sonar-p) -->
+        <sonar.host.url>${focus-pom.sonarUrl}</sonar.host.url>
+        <sonar.sourceEncoding>${project.build.sourceEncoding}</sonar.sourceEncoding>
+        <sonar.java.target>${maven.compiler.target}</sonar.java.target>
+        <sonar.java.source>${maven.compiler.source}</sonar.java.source>
+
+                
+        <!-- ================================ -->
+        <!-- Maven plugin versions properties -->
+        <!-- ================================ -->
+        <!--# Core plugins-->
+        <focus-pom.maven.clean.plugin.version>3.0.0</focus-pom.maven.clean.plugin.version>
+        <focus-pom.maven.compiler.plugin.version>3.6.1</focus-pom.maven.compiler.plugin.version>
+        <focus-pom.maven.deploy.plugin.version>2.8.2</focus-pom.maven.deploy.plugin.version>
+        <focus-pom.maven.failsafe.plugin.version>2.20</focus-pom.maven.failsafe.plugin.version>
+        <focus-pom.maven.install.plugin.version>2.5.2</focus-pom.maven.install.plugin.version>
+        <focus-pom.maven.resources.plugin.version>3.0.2</focus-pom.maven.resources.plugin.version>
+        <focus-pom.maven.site.plugin.version>3.6</focus-pom.maven.site.plugin.version>
+        <focus-pom.maven.surefire.plugin.version>2.20</focus-pom.maven.surefire.plugin.version>
+        <focus-pom.maven.verifier.plugin.version>1.1</focus-pom.maven.verifier.plugin.version>
+    
+        <!--# Packaging types/tools (only used subset)-->
+        <focus-pom.maven.ear.plugin.version>2.10.1</focus-pom.maven.ear.plugin.version>
+        <focus-pom.maven.ejb.plugin.version>2.5.1</focus-pom.maven.ejb.plugin.version>
+        <focus-pom.maven.jar.plugin.version>3.0.2</focus-pom.maven.jar.plugin.version>
+        <focus-pom.maven.war.plugin.version>3.1.0</focus-pom.maven.war.plugin.version>
+        <focus-pom.maven.source.plugin.version>3.0.1</focus-pom.maven.source.plugin.version>
+        
+        <!-- # Reporting plugins (only used subset) -->
+        <focus-pom.maven.javadoc.plugin.version>2.10.4</focus-pom.maven.javadoc.plugin.version>
+        <focus-pom.maven.jxr.plugin.version>2.5</focus-pom.maven.jxr.plugin.version>
+        <focus-pom.maven.project-info-reports.plugin.version>2.9</focus-pom.maven.project-info-reports.plugin.version>
+        <focus-pom.maven.surefire-report.plugin.version>${focus-pom.maven.surefire.plugin.version}</focus-pom.maven.surefire-report.plugin.version>
+        
+        <!-- # Tool plugins -->
+        <focus-pom.maven.dependency.plugin.version>3.0.1</focus-pom.maven.dependency.plugin.version>
+        <focus-pom.maven.enforcer.plugin.version>1.4.1</focus-pom.maven.enforcer.plugin.version>
+        <focus-pom.maven.gpg.plugin.version>1.6</focus-pom.maven.gpg.plugin.version>
+        <focus-pom.maven.release.plugin.version>2.5.3</focus-pom.maven.release.plugin.version>
+
+        <!-- # Outside The Maven Land -->
+        <focus-pom.maven.versions.plugin.version>2.3</focus-pom.maven.versions.plugin.version>                       
+        <focus-pom.maven.scm.provider.version>2.1.1</focus-pom.maven.scm.provider.version>
+                                                                        
+        <!-- # Maven plugin deps-->
+        <focus-pom.maven.release.plugin.scm.provider.git.version>1.9.5</focus-pom.maven.release.plugin.scm.provider.git.version>      
+        <focus-pom.maven.enforcer.plugin.extra.rules.version>1.0-beta-6</focus-pom.maven.enforcer.plugin.extra.rules.version>
+        <focus-pom.maven.site.plugin.wagon.git.version>2.0.4</focus-pom.maven.site.plugin.wagon.git.version>
+        <focus-pom.site.github.plugin.version>0.12</focus-pom.site.github.plugin.version>
+        <focus-pom.maven.javadoc.plugin.apiviz.version>1.3.2.GA</focus-pom.maven.javadoc.plugin.apiviz.version>
+        
+        <!-- Other non default maven version-->
+        <focus-pom.jacoco.plugin.version>0.7.9</focus-pom.jacoco.plugin.version>
+        <focus-pom.jacoco.plugin.arquillian.version>1.0.0.Alpha9</focus-pom.jacoco.plugin.arquillian.version>
+        <!--focus-pom.maven.jacoco.plugin.asm.version>5.2</focus-pom.maven.jacoco.plugin.asm.version-->
+        <focus-pom.site.tattletale.plugin.version>1.2.0.Beta2</focus-pom.site.tattletale.plugin.version>
+        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-CR1</focus-pom.site.tattletale.javassist.plugin.version>    
+
+        
+        <!-- ========================= -->
+        <!-- Focus specific properties -->
+        <!-- ========================= -->
+        <!-- Corporate projects information (do not overwrite) -->
+        <focus-pom.organizationName>FOCUS (Fisheries Open Source Community Software)</focus-pom.organizationName>
+        <focus-pom.organizationUrl>http://www.focus.fish</focus-pom.organizationUrl>
+        <focus-pom.ciManagementUrl>https://jenkins.focus.fish</focus-pom.ciManagementUrl>
+        <focus-pom.issueManagementUrl>https://focusfish.atlassian.net/</focus-pom.issueManagementUrl>
+        
+        <!--Enforce (and use)-->
+        <focus-pom.java.version>1.7</focus-pom.java.version>
+        <focus-pom.maven.version>3.2.0</focus-pom.maven.version>
+        <focus-pom.encoding.properties>ISO-8859-1</focus-pom.encoding.properties>
+        <focus-pom.encoding.xml>UTF-8</focus-pom.encoding.xml>
+        <focus-pom.enforce-encoding.java.includes>src/main/java/**,src/test/java/**</focus-pom.enforce-encoding.java.includes>
+        <focus-pom.enforce-encoding.properties.includes>src/main/resources/**/*.properties,src/test/resources/**/*.properties</focus-pom.enforce-encoding.properties.includes>
+        <focus-pom.enforce-encoding.xml.includes>src/main/resources/**/*.xml,src/main/resources/**/*.xsd,src/main/resources/**/*.wsdl,src/test/resources/**/*.xml</focus-pom.enforce-encoding.xml.includes>
+       
+        <!--Site-->
+        <focus-pom.public.base.site.url>https://unionvms.github.io</focus-pom.public.base.site.url>
+        <focus-pom.public.context.site.url>${project.artifactId}</focus-pom.public.context.site.url>
+
+        <!--Distribution-->
+        <focus-pom.distribution.release.id>focus-releases</focus-pom.distribution.release.id>
+        <focus-pom.distribution.release.name>UnionVms Repository</focus-pom.distribution.release.name>
+        <focus-pom.distribution.release.url>http://nexus.focus.fish/nexus/content/repositories/releases/</focus-pom.distribution.release.url>
+        <focus-pom.distribution.snapshot.id>focus-snapshots</focus-pom.distribution.snapshot.id>
+        <focus-pom.distribution.snapshot.name>UnionVms Snapshot Repository</focus-pom.distribution.snapshot.name>
+        <focus-pom.distribution.snapshot.url>http://nexus.focus.fish/nexus/content/repositories/snapshots</focus-pom.distribution.snapshot.url>
+        <focus-pom.distribution.stage.id>focus-stages</focus-pom.distribution.stage.id> 
+        <focus-pom.distribution.stage.name>UnionVms Stage Repository</focus-pom.distribution.stage.name>
+        <focus-pom.distribution.stage.url>http://nexus.focus.fish/nexus/repository/stages</focus-pom.distribution.stage.url>
+
+        <!--Other-->
+        <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
+        <focus-pom.maven.jgitflow.plugin.version>1.0-m5.1</focus-pom.maven.jgitflow.plugin.version>
+        <focus-pom.maven.gitflow.helper.plugin.version>1.7.2</focus-pom.maven.gitflow.helper.plugin.version>    
+        
+        <!-- =================================================== -->
+        <!-- IDE specific properties                             -->
+        <!-- =================================================== -->
+        <netbeans.hint.jdkPlatform>JDK_${focus-pom.java.version}</netbeans.hint.jdkPlatform>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- ============================================================================ --> 
+                <!-- Maven core plugins order based on http://maven.apache.org/plugins/index.html -->
+                <!-- ============================================================================ -->
+                
+                <!--# Core plugins-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${focus-pom.maven.clean.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${focus-pom.maven.compiler.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${focus-pom.maven.deploy.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${focus-pom.maven.failsafe.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${focus-pom.maven.install.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${focus-pom.maven.resources.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${focus-pom.maven.site.plugin.version}</version>
+                    <configuration>
+                        <inputEncoding>${focus-pom.encoding.xml}</inputEncoding>
+                        <generateSitemap>true</generateSitemap>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.trajano.wagon</groupId>
+                            <artifactId>wagon-git</artifactId>
+                            <version>${focus-pom.maven.site.plugin.wagon.git.version}</version>
+                        </dependency>                    
+                    </dependencies>                    
+                </plugin>                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${focus-pom.maven.surefire.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-verifier-plugin</artifactId>
+                    <version>${focus-pom.maven.verifier.plugin.version}</version>
+                </plugin>
+                
+                <!--# Packaging types/tools (only used subset)-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>${focus-pom.maven.ear.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>${focus-pom.maven.ejb.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${focus-pom.maven.jar.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${focus-pom.maven.war.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${focus-pom.maven.source.plugin.version}</version>
+                </plugin>
+                
+                <!-- # Reporting plugins (only used subset) -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${focus-pom.maven.javadoc.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>${focus-pom.maven.jxr.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${focus-pom.maven.surefire-report.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>${focus-pom.maven.project-info-reports.plugin.version}</version>
+                    <configuration>
+                        <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                    </configuration>
+                </plugin>
+                
+                <!-- # Tool plugins -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${focus-pom.maven.dependency.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${focus-pom.maven.enforcer.plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>extra-enforcer-rules</artifactId>
+                            <version>${focus-pom.maven.enforcer.plugin.extra.rules.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${focus-pom.maven.gpg.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${focus-pom.maven.release.plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.scm</groupId>
+                            <artifactId>maven-scm-provider-gitexe</artifactId>
+                            <version>${focus-pom.maven.release.plugin.scm.provider.git.version}</version>
+                        </dependency>
+                    </dependencies>          
+                </plugin>
+
+
+                <!-- ============= --> 
+                <!-- Other plugins -->
+                <!-- ============= --> 
+                <!-- Test -->
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${focus-pom.jacoco.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>pre-unit-test</id>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                            <configuration>
+                                <append>true</append>
+                                <propertyName>surefireArgLine</propertyName>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>post-unit-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                
+                <!-- Site -->
+                <plugin>
+                    <groupId>org.jboss.tattletale</groupId>
+                    <artifactId>tattletale-maven</artifactId>
+                    <version>${focus-pom.site.tattletale.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>site</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.javassist</groupId>
+                            <artifactId>javassist</artifactId>
+                            <version>${focus-pom.site.tattletale.javassist.plugin.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <source>${project.build.directory}/${project.artifactId}</source>
+                        <destination>${project.build.directory}/site/tattleTaleReport</destination>
+                        <profiles>
+                            <report>*</report>
+                        </profiles>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${focus-pom.maven.versions.plugin.version}</version>
+                    <configuration>
+                        <allowSnapshots>true</allowSnapshots>
+                    </configuration>
+                </plugin>					
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>${focus-pom.maven.jgitflow.plugin.version}</version>
+                    <configuration>
+                        <flowInitContext>
+                            <developBranchName>dev</developBranchName>
+                        </flowInitContext>
+                        <username>${git.user}</username>
+                        <password>${git.password}</password>
+                    </configuration>
+                </plugin>
+                <!-- https://github.com/egineering-llc/gitflow-helper-maven-plugin -->
+                <plugin>
+                    <groupId>com.e-gineering</groupId>
+                    <artifactId>gitflow-helper-maven-plugin</artifactId>
+                    <version>${focus-pom.maven.gitflow.helper.plugin.version}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <releaseDeploymentRepository>${focus-pom.distribution.release.id}</releaseDeploymentRepository>
+                        <snapshotDeploymentRepository>${focus-pom.distribution.snapshot.id}</snapshotDeploymentRepository>
+                        <!--id::layout::url::unique-->
+                        <stageDeploymentRepository>${focus-pom.distribution.stage.id}::default::${focus-pom.distribution.stage.url}::false</stageDeploymentRepository>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>enforce-versions</goal>
+                                <goal>retarget-deploy</goal>
+                                <goal>update-stage-dependencies</goal>
+                                <goal>set-properties</goal>
+                                <goal>tag-master</goal>
+                                <goal>promote-master</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            
+            </plugins>
+            
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <inherited>false</inherited>
+                        <id>attach-descriptor</id>
+                        <goals>
+                            <goal>attach-descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.e-gineering</groupId>
+                <artifactId>gitflow-helper-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    
+    
+    <profiles>
+        <!-- enforce-jdk-version -->
+        <profile>
+            <id>enforce-jdk-version</id>
+            <activation>
+                <!-- To disable profile, define property -Dfocus-pom.enforce.jdk.version.disabled=true -->
+                <property>
+                    <name>!focus-pom.enforce.jdk.version.disabled</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforce-jdk-version</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireJavaVersion>
+                                            <version>[${focus-pom.java.version},${focus-pom.java.version}.999)</version>
+                                        </requireJavaVersion>
+                                        <enforceBytecodeVersion>
+                                            <maxJdkVersion>${focus-pom.java.version}</maxJdkVersion>
+                                        </enforceBytecodeVersion>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        <!-- enforce-maven-version -->
+        <profile>
+            <id>enforce-maven-version</id>
+            <activation>
+                <!-- To disable profile, define property -Dfocus-pom.enforce.maven.version.disabled=true -->
+                <property>
+                    <name>!focus-pom.enforce.maven.version.disabled</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforce-maven-versions</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireMavenVersion>
+                                            <version>${focus-pom.maven.version}</version>
+                                        </requireMavenVersion>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        <!-- enforce-encoding -->
+        <profile>
+            <id>enforce-encoding</id>
+            <activation>
+                <!-- To enable profile, define property -Dfocus-pom.enforce.encoding.version.enable=true -->
+                <property>
+                    <name>focus-pom.enforce.encoding.version.enable</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforce-java-encoding</id>
+                                
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireEncoding>
+                                            <encoding>${project.build.sourceEncoding}</encoding>
+                                            <includes>${focus-pom.enforce-encoding.java.includes}</includes>
+                                        </requireEncoding>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>enforce-property-encoding</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireEncoding>
+                                            <encoding>${focus-pom.encoding.properties}</encoding>
+                                            <includes>${focus-pom.enforce-encoding.properties.includes}</includes>
+                                        </requireEncoding>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>enforce-xml-encoding</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireEncoding>
+                                            <encoding>${focus-pom.encoding.xml}</encoding>
+                                            <includes>${focus-pom.enforce-encoding.xml.includes}</includes>
+                                        </requireEncoding>
+                                    </rules>
+                                </configuration>
+                            </execution>              
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        <!--jacoco test covarge--> 
+        <profile>
+            <id>jacoco</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <argLine>@{surefireArgLine}</argLine>
+                        </configuration>                        
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        <!--release-sign-artifacts-required-by-maven-central--> 
+        <profile>
+            <id>release-sign-artifacts-required-by-maven-central</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>bundle-sources</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                    <goal>test-jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        <!--site-reports-->
+        <profile>
+            <id>site-reports</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-site-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.jboss.tattletale</groupId>
+                        <artifactId>tattletale-maven</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-project-info-reports-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                    </plugin>           
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-report-plugin</artifactId>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>report-only</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jxr-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>versions-maven-plugin</artifactId>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>dependency-updates-report</report>
+                                    <report>plugin-updates-report</report>
+                                    <report>property-updates-report</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>${focus-pom.maven.javadoc.plugin.version}</version>
+						<configuration>
+							<includeDependencySources>false</includeDependencySources>
+							<includeTransitiveDependencySources>false</includeTransitiveDependencySources>
+							<detectOfflineLinks>true</detectOfflineLinks>
+							<doclet>org.jboss.apiviz.APIviz</doclet>
+							<docletArtifacts>
+								<docletArtifact>
+									<groupId>org.jboss.apiviz</groupId>
+									<artifactId>apiviz</artifactId>
+									<version>${focus-pom.maven.javadoc.plugin.apiviz.version}</version>
+								</docletArtifact>
+							</docletArtifacts>
+							<useStandardDocletOptions>true</useStandardDocletOptions>
+							<charset>UTF-8</charset>
+							<encoding>UTF-8</encoding>
+							<source>${java.version}</source>
+							<docencoding>UTF-8</docencoding>
+							<breakiterator>true</breakiterator>
+							<version>true</version>
+							<author>true</author>
+							<keywords>true</keywords>
+							<failOnError>false</failOnError>
+							<additionalparam>-sourceclasspath ${project.build.outputDirectory}</additionalparam>
+						</configuration>
+						<reportSets>
+							<reportSet>
+								<id>default</id>
+								<reports>
+									<report>javadoc-no-fork</report>
+									<report>test-javadoc-no-fork</report>
+								</reports>
+							</reportSet>
+						</reportSets>
+					</plugin>                    
+                </plugins>
+            </reporting>
+        </profile>         
+    </profiles>
 </project>
