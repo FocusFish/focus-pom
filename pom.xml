@@ -176,10 +176,10 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- Focus specific properties -->
         <!-- ========================= -->
         <!-- Corporate projects information (do not overwrite) -->
-		<focus-pom.organizationName>FOCUS (Fisheries Open Source Community Software)</focus-pom.organizationName>
+        <focus-pom.organizationName>FOCUS (Fisheries Open Source Community Software)</focus-pom.organizationName>
         <focus-pom.organizationUrl>http://www.focus.fish</focus-pom.organizationUrl>
-		<focus-pom.ciManagementUrl>https://jenkins.focus.fish</focus-pom.ciManagementUrl>
-		<focus-pom.issueManagementUrl>https://focusfish.atlassian.net/</focus-pom.issueManagementUrl>
+        <focus-pom.ciManagementUrl>https://jenkins.focus.fish</focus-pom.ciManagementUrl>
+        <focus-pom.issueManagementUrl>https://focusfish.atlassian.net/</focus-pom.issueManagementUrl>
         
         <!--Enforce (and use)-->
         <focus-pom.java.version>1.7</focus-pom.java.version>
@@ -207,7 +207,8 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!--Other-->
         <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
-        
+        <focus-pom.maven.jgitflow.plugin.version>1.0-m5.1</focus-pom.maven.jgitflow.plugin.version>
+        <focus-pom.maven.gitflow.helper.plugin.version>1.7.1</focus-pom.maven.gitflow.helper.plugin.version>    
         
         <!-- =================================================== -->
         <!-- IDE specific properties                             -->
@@ -446,7 +447,46 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         <allowSnapshots>true</allowSnapshots>
                     </configuration>
                 </plugin>					
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>${focus-pom.maven.jgitflow.plugin.version}</version>
+                    <configuration>
+                        <flowInitContext>
+                            <developBranchName>dev</developBranchName>
+                        </flowInitContext>
+                        <username>${git.user}</username>
+                        <password>${git.password}</password>
+                    </configuration>
+                </plugin>
+                <!-- https://github.com/egineering-llc/gitflow-helper-maven-plugin -->
+                <plugin>
+                    <groupId>com.e-gineering</groupId>
+                    <artifactId>gitflow-helper-maven-plugin</artifactId>
+                    <version>${focus-pom.maven.gitflow.helper.plugin.version}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <releaseDeploymentRepository>${focus-pom.distribution.release.id}</releaseDeploymentRepository>
+                        <snapshotDeploymentRepository>${focus-pom.distribution.snapshot.id}</snapshotDeploymentRepository>
+                        <!--id::layout::url::unique-->
+                        <stageDeploymentRepository>${focus-pom.distribution.stage.id}::default::${focus-pom.distribution.stage.url}::false</stageDeploymentRepository>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>enforce-versions</goal>
+                                <goal>retarget-deploy</goal>
+                                <goal>update-stage-dependencies</goal>
+                                <goal>set-properties</goal>
+                                <goal>tag-master</goal>
+                                <goal>promote-master</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            
             </plugins>
+            
         </pluginManagement>
         <plugins>
             <plugin>
@@ -460,6 +500,14 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.e-gineering</groupId>
+                <artifactId>gitflow-helper-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
