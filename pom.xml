@@ -15,7 +15,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
     <modelVersion>4.0.0</modelVersion>
     <groupId>fish.focus.maven</groupId>
     <artifactId>focus-pom</artifactId>
-    <version>1.6-SNAPSHOT</version>
+    <version>1.6</version>
     <packaging>pom</packaging>
     
     <!-- ================================================================ -->
