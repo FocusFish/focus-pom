@@ -154,7 +154,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.release.plugin.version>2.5.3</focus-pom.maven.release.plugin.version>
 
         <!-- # Outside The Maven Land -->
-        <focus-pom.maven.versions.plugin.version>2.3</focus-pom.maven.versions.plugin.version>                       
+        <focus-pom.maven.versions.plugin.version>2.4</focus-pom.maven.versions.plugin.version>                       
         <focus-pom.maven.scm.provider.version>2.1.1</focus-pom.maven.scm.provider.version>
                                                                         
         <!-- # Maven plugin deps-->
