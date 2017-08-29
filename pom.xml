@@ -598,6 +598,45 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             </build>
         </profile>
         
+                
+        <!-- enforce-slf4j-logging -->
+        <profile>
+            <id>enforce-slf4j-logging</id>
+            <activation>
+                <property>
+                    <name>focus-pom.enforce.slf4j.version.enable</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforce-java-encoding</id>
+                                
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+						                <bannedDependencies>
+						                  <excludes>
+						                    <exclude>commons-logging:commons-logging</exclude>
+						                    <exclude>log4j:log4j</exclude>
+						                  </excludes>
+						                </bannedDependencies>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>        
+        
+        
         <!-- enforce-encoding -->
         <profile>
             <id>enforce-encoding</id>
