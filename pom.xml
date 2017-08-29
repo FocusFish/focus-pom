@@ -471,32 +471,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         <password>${git.password}</password>
                     </configuration>
                 </plugin>
-                <!-- https://github.com/egineering-llc/gitflow-helper-maven-plugin -->
-                <plugin>
-                    <groupId>com.e-gineering</groupId>
-                    <artifactId>gitflow-helper-maven-plugin</artifactId>
-                    <version>${focus-pom.maven.gitflow.helper.plugin.version}</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <releaseDeploymentRepository>${focus-pom.distribution.release.id}</releaseDeploymentRepository>
-                        <snapshotDeploymentRepository>${focus-pom.distribution.snapshot.id}</snapshotDeploymentRepository>
-                        <!--id::layout::url::unique-->
-                        <stageDeploymentRepository>${focus-pom.distribution.stage.id}::default::${focus-pom.distribution.stage.url}::false</stageDeploymentRepository>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>enforce-versions</goal>
-                                <goal>retarget-deploy</goal>
-                                <goal>update-stage-dependencies</goal>
-                                <goal>set-properties</goal>
-                                <goal>tag-master</goal>
-                                <goal>promote-master</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            
             </plugins>
             
         </pluginManagement>
@@ -516,10 +490,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             <plugin>
                 <groupId>external.atlassian.jgitflow</groupId>
                 <artifactId>jgitflow-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.e-gineering</groupId>
-                <artifactId>gitflow-helper-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
