@@ -140,6 +140,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.jar.plugin.version>3.0.2</focus-pom.maven.jar.plugin.version>
         <focus-pom.maven.war.plugin.version>3.1.0</focus-pom.maven.war.plugin.version>
         <focus-pom.maven.source.plugin.version>3.0.1</focus-pom.maven.source.plugin.version>
+        <focus-pom.maven.assembly.plugin.version>3.1.0</focus-pom.maven.assembly.plugin.version>
         
         <!-- # Reporting plugins (only used subset) -->
         <focus-pom.maven.javadoc.plugin.version>2.10.4</focus-pom.maven.javadoc.plugin.version>
@@ -150,6 +151,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- # Tool plugins -->
         <focus-pom.maven.dependency.plugin.version>3.0.1</focus-pom.maven.dependency.plugin.version>
         <focus-pom.maven.enforcer.plugin.version>1.4.1</focus-pom.maven.enforcer.plugin.version>
+        <focus-pom.maven.ant.plugin.version>1.8</focus-pom.maven.ant.plugin.version>
         <focus-pom.maven.gpg.plugin.version>1.6</focus-pom.maven.gpg.plugin.version>
         <focus-pom.maven.release.plugin.version>2.5.3</focus-pom.maven.release.plugin.version>
 
@@ -169,7 +171,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.jacoco.plugin.arquillian.version>1.0.0.Alpha9</focus-pom.jacoco.plugin.arquillian.version>
         <!--focus-pom.maven.jacoco.plugin.asm.version>5.2</focus-pom.maven.jacoco.plugin.asm.version-->
         <focus-pom.site.tattletale.plugin.version>1.2.0.Beta2</focus-pom.site.tattletale.plugin.version>
-        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-CR1</focus-pom.site.tattletale.javassist.plugin.version>    
+        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-CR2</focus-pom.site.tattletale.javassist.plugin.version>    
 
         
         <!-- ========================= -->
@@ -307,6 +309,11 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${focus-pom.maven.source.plugin.version}</version>
                 </plugin>
+                <plugin>
+                	<groupId>org.apache.maven.plugins</groupId>
+                	<artifactId>maven-assembly-plugin</artifactId>
+                	<version>${focus-pom.maven.assembly.plugin.version}</version>
+                </plugin>
                 
                 <!-- # Reporting plugins (only used subset) -->
                 <plugin>
@@ -350,6 +357,11 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                             <version>${focus-pom.maven.enforcer.plugin.extra.rules.version}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+                <plugin>
+                	<groupId>org.apache.maven.plugins</groupId>
+                	<artifactId>maven-antrun-plugin</artifactId>
+                	<version>${focus-pom.maven.ant.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
