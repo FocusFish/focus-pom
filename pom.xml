@@ -138,7 +138,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.ear.plugin.version>2.10.1</focus-pom.maven.ear.plugin.version>
         <focus-pom.maven.ejb.plugin.version>3.0.0</focus-pom.maven.ejb.plugin.version>
         <focus-pom.maven.jar.plugin.version>3.0.2</focus-pom.maven.jar.plugin.version>
-        <focus-pom.maven.war.plugin.version>3.1.0</focus-pom.maven.war.plugin.version>
+        <focus-pom.maven.war.plugin.version>3.2.0</focus-pom.maven.war.plugin.version>
         <focus-pom.maven.source.plugin.version>3.0.1</focus-pom.maven.source.plugin.version>
         <focus-pom.maven.assembly.plugin.version>3.1.0</focus-pom.maven.assembly.plugin.version>
         
@@ -157,7 +157,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.japicmp.plugin.version>0.10.0</focus-pom.maven.japicmp.plugin.version>
 
         <!-- # Outside The Maven Land -->
-        <focus-pom.maven.versions.plugin.version>2.4</focus-pom.maven.versions.plugin.version>                       
+        <focus-pom.maven.versions.plugin.version>2.5</focus-pom.maven.versions.plugin.version>                       
         <focus-pom.maven.scm.provider.version>2.1.1</focus-pom.maven.scm.provider.version>
                                                                         
         <!-- # Maven plugin deps-->
@@ -172,7 +172,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.jacoco.plugin.arquillian.version>1.0.0.Alpha9</focus-pom.jacoco.plugin.arquillian.version>
         <!--focus-pom.maven.jacoco.plugin.asm.version>5.2</focus-pom.maven.jacoco.plugin.asm.version-->
         <focus-pom.site.tattletale.plugin.version>1.2.0.Beta2</focus-pom.site.tattletale.plugin.version>
-        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-CR2</focus-pom.site.tattletale.javassist.plugin.version>    
+        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-GA</focus-pom.site.tattletale.javassist.plugin.version>    
 
         
         <!-- ========================= -->
