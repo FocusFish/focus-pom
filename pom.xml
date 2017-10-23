@@ -506,9 +506,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <profile>
             <id>enforce-jdk-version</id>
             <activation>
-                <!-- To disable profile, define property -Dfocus-pom.enforce.jdk.version.disabled=true -->
+                <!-- To enable profile, define property -Dfocus-pom.enforce.jdk.version.enable=true -->
                 <property>
-                    <name>!focus-pom.enforce.jdk.version.disabled</name>
+                    <name>focus-pom.enforce.jdk.version.enabled</name>
                 </property>
             </activation>
             <build>
@@ -527,13 +527,42 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                                         <requireJavaVersion>
                                             <version>[${focus-pom.java.version},${focus-pom.java.version}.999)</version>
                                         </requireJavaVersion>
+                                    </rules>
+                                </configuration>
+                            </execution>                        
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- enforce-jdk-bytecode-version -->
+        <profile>
+            <id>enforce-jdk-bytecode-version</id>
+            <activation>
+                <!-- To disable profile, define property -Dfocus-pom.enforce.jdk.version.disabled=true -->
+                <property>
+                    <name>!focus-pom.enforce.jdk.version.disabled</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>enforce-jdk-bytecode-version</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
                                         <enforceBytecodeVersion>
                                             <maxJdkVersion>${focus-pom.java.version}</maxJdkVersion>
                                         </enforceBytecodeVersion>
                                     </rules>
                                 </configuration>
-                            </execution>
-                        
+                            </execution>                        
                         </executions>
                     </plugin>
                 </plugins>
@@ -815,7 +844,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 							<author>true</author>
 							<keywords>true</keywords>
 							<failOnError>false</failOnError>
-							<additionalparam>-sourceclasspath ${project.build.outputDirectory}</additionalparam>
+							<additionalparam>-sourceclasspath ${project.build.outputDirectory} ${javadoc.opts}</additionalparam>
 						</configuration>
 						<reportSets>
 							<reportSet>
@@ -829,6 +858,24 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 					</plugin>                    
                 </plugins>
             </reporting>
-        </profile>         
+        </profile>
+		<profile>
+			<id>javadoc-java8-opts</id>
+			<activation>
+				<jdk>[1.8,)</jdk>
+			</activation>
+			<properties>
+				<javadoc.opts>-Xdoclint:none</javadoc.opts>
+			</properties>
+		</profile>
+		<profile>
+			<id>doclint-java7-disable</id>
+			<activation>
+				<jdk>1.7</jdk>
+			</activation>
+			<properties>
+				<javadoc.opts></javadoc.opts>
+			</properties>
+		</profile>   		
     </profiles>
 </project>
