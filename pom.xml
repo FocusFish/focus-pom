@@ -867,6 +867,22 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 			<properties>
 				<javadoc.opts>-Xdoclint:none</javadoc.opts>
 			</properties>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<configuration>
+									<additionalparam>${javadoc.opts}</additionalparam>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>			
 		</profile>
 		<profile>
 			<id>doclint-java7-disable</id>
