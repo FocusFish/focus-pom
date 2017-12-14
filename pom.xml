@@ -17,7 +17,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
     <artifactId>focus-pom</artifactId>
     <version>1.14-SNAPSHOT</version>
     <packaging>pom</packaging>
-    
+    <name>focus-pom</name>
+    <description>focus pom, parent for all projects</description>
+	    
     <!-- ================================================================ -->
     <!-- Project specific settings, should be redefined in project's POMs -->
     <!-- ================================================================ -->
@@ -42,7 +44,22 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <name>${focus-pom.organizationName}</name>
         <url>${focus-pom.organizationUrl}</url>
     </organization>
-
+    
+    <developers>
+		<developer>
+	      <id>petermcj</id>
+	      <name>Peter Johansson</name>
+	      <email>peter.johansson@havochvatten.se</email>
+	      <organization>www.havochvatten.se</organization>
+	    </developer>
+		<developer>
+	      <id>jamessorling</id>
+	      <name>James Sörling</name>
+	      <email>james.sorling@havochvatten.se</email>
+	      <organization>www.havochvatten.se</organization>
+	    </developer>	        
+    </developers>
+    
     <issueManagement>
         <url>${focus-pom.issueManagementUrl}</url>
     </issueManagement>
