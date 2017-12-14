@@ -729,6 +729,14 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!--release-sign-artifacts-required-by-maven-central--> 
         <profile>
             <id>release-sign-artifacts-required-by-maven-central</id>
+            <distributionManagement>
+            	<repository>
+			      <uniqueVersion>false</uniqueVersion>
+			      <id>focus-mavencentral-releases</id>
+			      <name>Focus Staging Repository</name>
+			      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			    </repository>
+            </distributionManagement>
             <build>
                 <plugins>
                     <plugin>
