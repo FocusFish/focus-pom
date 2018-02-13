@@ -19,7 +19,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
     <packaging>pom</packaging>
     <name>focus-pom</name>
     <description>focus pom, parent for all projects</description>
-	    
+
     <!-- ================================================================ -->
     <!-- Project specific settings, should be redefined in project's POMs -->
     <!-- ================================================================ -->
@@ -39,27 +39,12 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
         </license>
     </licenses>
-    
+
     <organization>
         <name>${focus-pom.organizationName}</name>
         <url>${focus-pom.organizationUrl}</url>
     </organization>
-    
-    <developers>
-		<developer>
-	      <id>petermcj</id>
-	      <name>Peter Johansson</name>
-	      <email>peter.johansson@havochvatten.se</email>
-	      <organization>www.havochvatten.se</organization>
-	    </developer>
-		<developer>
-	      <id>jamessorling</id>
-	      <name>James Sörling</name>
-	      <email>james.sorling@havochvatten.se</email>
-	      <organization>www.havochvatten.se</organization>
-	    </developer>	        
-    </developers>
-    
+
     <issueManagement>
         <url>${focus-pom.issueManagementUrl}</url>
     </issueManagement>
@@ -90,7 +75,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- ================= -->
         <!-- Release plugin -->
         <project.scm.id>github</project.scm.id>
-        
+
         <!-- Set default encoding to UTF-8 (most plugins) -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
@@ -126,7 +111,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!-- Exclude build-number.txt file created by Jenkins in the project directory (m-release-p) -->
         <checkModificationExcludeList>build-number.txt</checkModificationExcludeList>
-		
+
         <!-- For multimodule build, if the build fails, none of the reactor projects is deployed (m-install-p, m-deploy-p) -->
         <installAtEnd>true</installAtEnd>
 
@@ -136,7 +121,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <sonar.java.target>${maven.compiler.target}</sonar.java.target>
         <sonar.java.source>${maven.compiler.source}</sonar.java.source>
 
-                
+
         <!-- ================================ -->
         <!-- Maven plugin versions properties -->
         <!-- ================================ -->
@@ -150,7 +135,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.site.plugin.version>3.6</focus-pom.maven.site.plugin.version>
         <focus-pom.maven.surefire.plugin.version>2.20.1</focus-pom.maven.surefire.plugin.version>
         <focus-pom.maven.verifier.plugin.version>1.1</focus-pom.maven.verifier.plugin.version>
-    
+
         <!--# Packaging types/tools (only used subset)-->
         <focus-pom.maven.ear.plugin.version>2.10.1</focus-pom.maven.ear.plugin.version>
         <focus-pom.maven.ejb.plugin.version>3.0.0</focus-pom.maven.ejb.plugin.version>
@@ -158,13 +143,13 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.war.plugin.version>3.2.0</focus-pom.maven.war.plugin.version>
         <focus-pom.maven.source.plugin.version>3.0.1</focus-pom.maven.source.plugin.version>
         <focus-pom.maven.assembly.plugin.version>3.1.0</focus-pom.maven.assembly.plugin.version>
-        
+
         <!-- # Reporting plugins (only used subset) -->
         <focus-pom.maven.javadoc.plugin.version>3.0.0</focus-pom.maven.javadoc.plugin.version>
         <focus-pom.maven.jxr.plugin.version>2.5</focus-pom.maven.jxr.plugin.version>
         <focus-pom.maven.project-info-reports.plugin.version>2.9</focus-pom.maven.project-info-reports.plugin.version>
         <focus-pom.maven.surefire-report.plugin.version>${focus-pom.maven.surefire.plugin.version}</focus-pom.maven.surefire-report.plugin.version>
-        
+
         <!-- # Tool plugins -->
         <focus-pom.maven.dependency.plugin.version>3.0.2</focus-pom.maven.dependency.plugin.version>
         <focus-pom.maven.enforcer.plugin.version>3.0.0-M1</focus-pom.maven.enforcer.plugin.version>
@@ -176,22 +161,22 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- # Outside The Maven Land -->
         <focus-pom.maven.versions.plugin.version>2.5</focus-pom.maven.versions.plugin.version>                       
         <focus-pom.maven.scm.provider.version>2.1.1</focus-pom.maven.scm.provider.version>
-                                                                        
+
         <!-- # Maven plugin deps-->
         <focus-pom.maven.release.plugin.scm.provider.git.version>1.9.5</focus-pom.maven.release.plugin.scm.provider.git.version>      
         <focus-pom.maven.enforcer.plugin.extra.rules.version>1.0-beta-6</focus-pom.maven.enforcer.plugin.extra.rules.version>
         <focus-pom.maven.site.plugin.wagon.git.version>2.0.4</focus-pom.maven.site.plugin.wagon.git.version>
         <focus-pom.site.github.plugin.version>0.12</focus-pom.site.github.plugin.version>
         <focus-pom.maven.javadoc.plugin.apiviz.version>1.3.2.GA</focus-pom.maven.javadoc.plugin.apiviz.version>
-        
+
         <!-- Other non default maven version-->
         <focus-pom.jacoco.plugin.version>0.7.9</focus-pom.jacoco.plugin.version>
         <focus-pom.jacoco.plugin.arquillian.version>1.0.0.Alpha9</focus-pom.jacoco.plugin.arquillian.version>
         <!--focus-pom.maven.jacoco.plugin.asm.version>5.2</focus-pom.maven.jacoco.plugin.asm.version-->
         <focus-pom.site.tattletale.plugin.version>1.2.0.Beta2</focus-pom.site.tattletale.plugin.version>
         <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-GA</focus-pom.site.tattletale.javassist.plugin.version>    
+        <focus-pom.toolchain.plugin.version>1.1</focus-pom.toolchain.plugin.version>
 
-        
         <!-- ========================= -->
         <!-- Focus specific properties -->
         <!-- ========================= -->
@@ -200,7 +185,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.organizationUrl>http://www.focus.fish</focus-pom.organizationUrl>
         <focus-pom.ciManagementUrl>https://jenkins.focus.fish</focus-pom.ciManagementUrl>
         <focus-pom.issueManagementUrl>https://focusfish.atlassian.net/</focus-pom.issueManagementUrl>
-        
+
         <!--Enforce (and use)-->
         <focus-pom.java.version>1.7</focus-pom.java.version>
         <focus-pom.maven.version>3.2.0</focus-pom.maven.version>
@@ -209,7 +194,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.enforce-encoding.java.includes>src/main/java/**,src/test/java/**</focus-pom.enforce-encoding.java.includes>
         <focus-pom.enforce-encoding.properties.includes>src/main/resources/**/*.properties,src/test/resources/**/*.properties</focus-pom.enforce-encoding.properties.includes>
         <focus-pom.enforce-encoding.xml.includes>src/main/resources/**/*.xml,src/main/resources/**/*.xsd,src/main/resources/**/*.wsdl,src/test/resources/**/*.xml</focus-pom.enforce-encoding.xml.includes>
-       
+
         <!--Site-->
         <focus-pom.public.base.site.url>https://unionvms.github.io</focus-pom.public.base.site.url>
         <focus-pom.public.context.site.url>${project.artifactId}</focus-pom.public.context.site.url>
@@ -229,7 +214,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
         <focus-pom.maven.jgitflow.plugin.version>1.0-m5.1</focus-pom.maven.jgitflow.plugin.version>
         <focus-pom.maven.gitflow.helper.plugin.version>1.7.2</focus-pom.maven.gitflow.helper.plugin.version>    
-        
+
         <!-- =================================================== -->
         <!-- IDE specific properties                             -->
         <!-- =================================================== -->
@@ -242,7 +227,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 <!-- ============================================================================ --> 
                 <!-- Maven core plugins order based on http://maven.apache.org/plugins/index.html -->
                 <!-- ============================================================================ -->
-                
+
                 <!--# Core plugins-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -300,7 +285,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <artifactId>maven-verifier-plugin</artifactId>
                     <version>${focus-pom.maven.verifier.plugin.version}</version>
                 </plugin>
-                
+
                 <!--# Packaging types/tools (only used subset)-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -328,11 +313,11 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <version>${focus-pom.maven.source.plugin.version}</version>
                 </plugin>
                 <plugin>
-                	<groupId>org.apache.maven.plugins</groupId>
-                	<artifactId>maven-assembly-plugin</artifactId>
-                	<version>${focus-pom.maven.assembly.plugin.version}</version>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${focus-pom.maven.assembly.plugin.version}</version>
                 </plugin>
-                
+
                 <!-- # Reporting plugins (only used subset) -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -357,7 +342,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
                     </configuration>
                 </plugin>
-                
+
                 <!-- # Tool plugins -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -377,14 +362,14 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     </dependencies>
                 </plugin>
                 <plugin>
-					<groupId>com.github.siom79.japicmp</groupId>
-					<artifactId>japicmp-maven-plugin</artifactId>
-					<version>${focus-pom.maven.japicmp.plugin.version}</version>
-				</plugin>
+                    <groupId>com.github.siom79.japicmp</groupId>
+                    <artifactId>japicmp-maven-plugin</artifactId>
+                    <version>${focus-pom.maven.japicmp.plugin.version}</version>
+                </plugin>
                 <plugin>
-                	<groupId>org.apache.maven.plugins</groupId>
-                	<artifactId>maven-antrun-plugin</artifactId>
-                	<version>${focus-pom.maven.ant.plugin.version}</version>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${focus-pom.maven.ant.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -445,7 +430,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         </execution>
                     </executions>
                 </plugin>
-                
+
                 <!-- Site -->
                 <plugin>
                     <groupId>org.jboss.tattletale</groupId>
@@ -495,7 +480,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     </configuration>
                 </plugin>
             </plugins>
-            
+
         </pluginManagement>
         <plugins>
             <plugin>
@@ -516,8 +501,8 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             </plugin>
         </plugins>
     </build>
-    
-    
+
+
     <profiles>
         <!-- enforce-jdk-version -->
         <profile>
@@ -585,7 +570,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </plugins>
             </build>
         </profile>
-        
+
         <!-- enforce-maven-version -->
         <profile>
             <id>enforce-maven-version</id>
@@ -619,8 +604,8 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </plugins>
             </build>
         </profile>
-        
-                
+
+
         <!-- enforce-slf4j-logging -->
         <profile>
             <id>enforce-slf4j-logging</id>
@@ -637,18 +622,18 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         <executions>
                             <execution>
                                 <id>enforce-java-encoding</id>
-                                
+
                                 <goals>
                                     <goal>enforce</goal>
                                 </goals>
                                 <configuration>
                                     <rules>
-						                <bannedDependencies>
-						                  <excludes>
-						                    <exclude>commons-logging:commons-logging</exclude>
-						                    <exclude>log4j:log4j</exclude>
-						                  </excludes>
-						                </bannedDependencies>
+                                        <bannedDependencies>
+                                            <excludes>
+                                                <exclude>commons-logging:commons-logging</exclude>
+                                                <exclude>log4j:log4j</exclude>
+                                            </excludes>
+                                        </bannedDependencies>
                                     </rules>
                                 </configuration>
                             </execution>
@@ -657,8 +642,8 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </plugins>
             </build>
         </profile>        
-        
-        
+
+
         <!-- enforce-encoding -->
         <profile>
             <id>enforce-encoding</id>
@@ -676,7 +661,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         <executions>
                             <execution>
                                 <id>enforce-java-encoding</id>
-                                
+
                                 <goals>
                                     <goal>enforce</goal>
                                 </goals>
@@ -722,7 +707,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </plugins>
             </build>
         </profile>
-        
+
         <!--jacoco test covarge--> 
         <profile>
             <id>jacoco</id>
@@ -742,17 +727,17 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </plugins>
             </build>
         </profile>
-        
+
         <!--release-sign-artifacts-required-by-maven-central--> 
         <profile>
             <id>release-sign-artifacts-required-by-maven-central</id>
             <distributionManagement>
-            	<repository>
-			      <uniqueVersion>false</uniqueVersion>
-			      <id>focus.mavencentral.releases</id>
-			      <name>Focus Staging Repository</name>
-			      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-			    </repository>
+                <repository>
+                    <uniqueVersion>false</uniqueVersion>
+                    <id>focus.mavencentral.releases</id>
+                    <name>Focus Staging Repository</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
             </distributionManagement>
             <build>
                 <plugins>
@@ -789,7 +774,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </plugins>
             </build>
         </profile>
-        
+
         <!--site-reports-->
         <profile>
             <id>site-reports</id>
@@ -843,80 +828,116 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                             </reportSet>
                         </reportSets>
                     </plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>${focus-pom.maven.javadoc.plugin.version}</version>
-						<configuration>
-							<includeDependencySources>false</includeDependencySources>
-							<includeTransitiveDependencySources>false</includeTransitiveDependencySources>
-							<detectOfflineLinks>true</detectOfflineLinks>
-							<doclet>org.jboss.apiviz.APIviz</doclet>
-							<docletArtifacts>
-								<docletArtifact>
-									<groupId>org.jboss.apiviz</groupId>
-									<artifactId>apiviz</artifactId>
-									<version>${focus-pom.maven.javadoc.plugin.apiviz.version}</version>
-								</docletArtifact>
-							</docletArtifacts>
-							<useStandardDocletOptions>true</useStandardDocletOptions>
-							<charset>UTF-8</charset>
-							<encoding>UTF-8</encoding>
-							<source>${java.version}</source>
-							<docencoding>UTF-8</docencoding>
-							<breakiterator>true</breakiterator>
-							<version>true</version>
-							<author>true</author>
-							<keywords>true</keywords>
-							<failOnError>false</failOnError>
-							<additionalparam>-sourceclasspath ${project.build.outputDirectory} ${javadoc.opts}</additionalparam>
-						</configuration>
-						<reportSets>
-							<reportSet>
-								<id>default</id>
-								<reports>
-									<report>javadoc-no-fork</report>
-									<report>test-javadoc-no-fork</report>
-								</reports>
-							</reportSet>
-						</reportSets>
-					</plugin>                    
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${focus-pom.maven.javadoc.plugin.version}</version>
+                        <configuration>
+                            <includeDependencySources>false</includeDependencySources>
+                            <includeTransitiveDependencySources>false</includeTransitiveDependencySources>
+                            <detectOfflineLinks>true</detectOfflineLinks>
+                            <doclet>org.jboss.apiviz.APIviz</doclet>
+                            <docletArtifacts>
+                                <docletArtifact>
+                                    <groupId>org.jboss.apiviz</groupId>
+                                    <artifactId>apiviz</artifactId>
+                                    <version>${focus-pom.maven.javadoc.plugin.apiviz.version}</version>
+                                </docletArtifact>
+                            </docletArtifacts>
+                            <useStandardDocletOptions>true</useStandardDocletOptions>
+                            <charset>UTF-8</charset>
+                            <encoding>UTF-8</encoding>
+                            <source>${java.version}</source>
+                            <docencoding>UTF-8</docencoding>
+                            <breakiterator>true</breakiterator>
+                            <version>true</version>
+                            <author>true</author>
+                            <keywords>true</keywords>
+                            <failOnError>false</failOnError>
+                            <additionalparam>-sourceclasspath ${project.build.outputDirectory} ${javadoc.opts}</additionalparam>
+                        </configuration>
+                        <reportSets>
+                            <reportSet>
+                                <id>default</id>
+                                <reports>
+                                    <report>javadoc-no-fork</report>
+                                    <report>test-javadoc-no-fork</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>                    
                 </plugins>
             </reporting>
         </profile>
-		<profile>
-			<id>javadoc-java8-opts</id>
-			<activation>
-				<jdk>[1.8,)</jdk>
-			</activation>
-			<properties>
-				<javadoc.opts>-Xdoclint:none</javadoc.opts>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<configuration>
-									<additionalparam>${javadoc.opts}</additionalparam>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>			
-		</profile>
-		<profile>
-			<id>doclint-java7-disable</id>
-			<activation>
-				<jdk>1.7</jdk>
-			</activation>
-			<properties>
-				<javadoc.opts />
-			</properties>
-		</profile>   		
+
+        <profile>
+            <id>javadoc-java8-opts</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <properties>
+                <javadoc.opts>-Xdoclint:none</javadoc.opts>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <configuration>
+                                    <additionalparam>${javadoc.opts}</additionalparam>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>			
+        </profile>
+
+        <profile>
+            <id>doclint-java7-disable</id>
+            <activation>
+                <jdk>1.7</jdk>
+            </activation>
+            <properties>
+                <javadoc.opts />
+            </properties>
+        </profile> 
+
+        <profile>
+            <id>toolchain</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <!-- suppy toolchains.xml with correct provided jdk version (https://maven.apache.org/guides/mini/guide-using-toolchains.html)-->
+                            <compilerVersion>${focus-pom.java.version}</compilerVersion>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-toolchains-plugin</artifactId>
+                        <version>${focus-pom.toolchain.plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>toolchain</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <toolchains>
+                                <jdk>
+                                    <version>${focus-pom.java.version}</version>
+                                </jdk>
+                            </toolchains>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
     </profiles>
 </project>
