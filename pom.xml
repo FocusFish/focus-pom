@@ -561,6 +561,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                                     <rules>
                                         <enforceBytecodeVersion>
                                             <maxJdkVersion>${focus-pom.java.version}</maxJdkVersion>
+                                            <ignoredScopes>
+                                                <ignoreScope>test</ignoreScope>
+                                            </ignoredScopes>
                                         </enforceBytecodeVersion>
                                     </rules>
                                 </configuration>
