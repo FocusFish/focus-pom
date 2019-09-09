@@ -879,7 +879,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 <jdk>[1.8,)</jdk>
             </activation>
             <properties>
-                <javadoc.opts>-Xdoclint:none</javadoc.opts>
+                <javadoc.doclint.none>none</javadoc.doclint.none>
             </properties>
             <build>
                 <plugins>
