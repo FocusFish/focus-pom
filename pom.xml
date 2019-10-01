@@ -137,7 +137,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.verifier.plugin.version>1.1</focus-pom.maven.verifier.plugin.version>
 
         <!--# Packaging types/tools (only used subset)-->
-        <focus-pom.maven.ear.plugin.version>3.0.1</focus-pom.maven.ear.plugin.version>
+        <focus-pom.maven.ear.plugin.version>2.10.1</focus-pom.maven.ear.plugin.version>
         <focus-pom.maven.ejb.plugin.version>3.0.0</focus-pom.maven.ejb.plugin.version>
         <focus-pom.maven.jar.plugin.version>3.1.2</focus-pom.maven.jar.plugin.version>
         <focus-pom.maven.war.plugin.version>3.2.3</focus-pom.maven.war.plugin.version>
