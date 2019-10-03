@@ -754,6 +754,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
+                                <configuration>
+                                    <doclint>${javadoc.doclint}</doclint>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -880,7 +883,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 <jdk>[1.8,)</jdk>
             </activation>
             <properties>
-                <javadoc.doclint.none>none</javadoc.doclint.none>
+                <javadoc.doclint>none</javadoc.doclint>
             </properties>
             <build>
                 <plugins>
@@ -891,7 +894,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                             <execution>
                                 <id>attach-javadocs</id>
                                 <configuration>
-                                    <additionalparam>${javadoc.opts}</additionalparam>
+                                    <doclint>${javadoc.doclint}</doclint>
                                 </configuration>
                             </execution>
                         </executions>
