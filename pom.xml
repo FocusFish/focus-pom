@@ -187,8 +187,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.issueManagementUrl>https://focusfish.atlassian.net/</focus-pom.issueManagementUrl>
 
         <!--Enforce (and use)-->
-        <focus-pom.java.version>1.8</focus-pom.java.version>
-        <focus-pom.maven.version>3.2.0</focus-pom.maven.version>
+        <focus-pom.java.version>11</focus-pom.java.version>
         <focus-pom.encoding.properties>ISO-8859-1</focus-pom.encoding.properties>
         <focus-pom.encoding.xml>UTF-8</focus-pom.encoding.xml>
         <focus-pom.enforce-encoding.java.includes>src/main/java/**,src/test/java/**</focus-pom.enforce-encoding.java.includes>
@@ -574,41 +573,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </plugins>
             </build>
         </profile>
-
-        <!-- enforce-maven-version -->
-        <profile>
-            <id>enforce-maven-version</id>
-            <activation>
-                <!-- To disable profile, define property -Dfocus-pom.enforce.maven.version.disabled=true -->
-                <property>
-                    <name>!focus-pom.enforce.maven.version.disabled</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>enforce-maven-versions</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireMavenVersion>
-                                            <version>${focus-pom.maven.version}</version>
-                                        </requireMavenVersion>
-                                    </rules>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
 
         <!-- enforce-slf4j-logging -->
         <profile>
