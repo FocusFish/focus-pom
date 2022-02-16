@@ -4,5 +4,4 @@ uvmsJenkinsfile {
   MAVEN_PROFILES      = ' '
   MAVEN_PROFILES_MAIN = ' '
   MAVEN_OPTS_MAIN     = ' '
-  DOCKER              = false
 }
