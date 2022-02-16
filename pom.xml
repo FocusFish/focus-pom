@@ -211,8 +211,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!--Other-->
         <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
-        <focus-pom.maven.jgitflow.plugin.version>1.0-m5.1</focus-pom.maven.jgitflow.plugin.version>
-        <focus-pom.maven.gitflow.helper.plugin.version>1.7.2</focus-pom.maven.gitflow.helper.plugin.version>    
+        <focus-pom.maven.gitflow.maven.plugin.version>1.17.0</focus-pom.maven.gitflow.maven.plugin.version>
 
         <!-- =================================================== -->
         <!-- IDE specific properties                             -->
@@ -467,15 +466,14 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     </configuration>
                 </plugin>					
                 <plugin>
-                    <groupId>external.atlassian.jgitflow</groupId>
-                    <artifactId>jgitflow-maven-plugin</artifactId>
-                    <version>${focus-pom.maven.jgitflow.plugin.version}</version>
+                    <groupId>com.amashchenko.maven.plugin</groupId>
+                    <artifactId>gitflow-maven-plugin</artifactId>
+                    <version>${focus-pom.maven.gitflow.maven.plugin.version}</version>
                     <configuration>
-                        <flowInitContext>
-                            <developBranchName>dev</developBranchName>
-                        </flowInitContext>
-                        <username>${git.user}</username>
-                        <password>${git.password}</password>
+                        <gitFlowConfig>
+                            <productionBranch>main</productionBranch>
+                            <developmentBranch>develop</developmentBranch>
+                        </gitFlowConfig>
                     </configuration>
                 </plugin>
             </plugins>
@@ -495,8 +493,8 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                 </executions>
             </plugin>
             <plugin>
-                <groupId>external.atlassian.jgitflow</groupId>
-                <artifactId>jgitflow-maven-plugin</artifactId>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
