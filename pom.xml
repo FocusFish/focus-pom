@@ -201,10 +201,10 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!--Distribution-->
         <focus-pom.distribution.release.id>focus.mavencentral.releases</focus-pom.distribution.release.id>
         <focus-pom.distribution.release.name>Focus Release Repository</focus-pom.distribution.release.name>
-        <focus-pom.distribution.release.url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</focus-pom.distribution.release.url>
+        <focus-pom.distribution.release.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</focus-pom.distribution.release.url>
         <focus-pom.distribution.snapshot.id>focus.mavencentral.snapshots</focus-pom.distribution.snapshot.id>
         <focus-pom.distribution.snapshot.name>Focus Snapshot Repository</focus-pom.distribution.snapshot.name>
-        <focus-pom.distribution.snapshot.url>https://s01.oss.sonatype.org/content/repositories/snapshots/</focus-pom.distribution.snapshot.url>
+        <focus-pom.distribution.snapshot.url>https://oss.sonatype.org/content/repositories/snapshots</focus-pom.distribution.snapshot.url>
 
         <!--Other-->
         <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
