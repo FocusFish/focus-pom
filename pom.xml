@@ -199,15 +199,12 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.public.context.site.url>${project.artifactId}</focus-pom.public.context.site.url>
 
         <!--Distribution-->
-        <focus-pom.distribution.release.id>focus-releases</focus-pom.distribution.release.id>
-        <focus-pom.distribution.release.name>UnionVms Repository</focus-pom.distribution.release.name>
-        <focus-pom.distribution.release.url>http://nexus.focus.fish/nexus/content/repositories/releases/</focus-pom.distribution.release.url>
-        <focus-pom.distribution.snapshot.id>focus-snapshots</focus-pom.distribution.snapshot.id>
-        <focus-pom.distribution.snapshot.name>UnionVms Snapshot Repository</focus-pom.distribution.snapshot.name>
-        <focus-pom.distribution.snapshot.url>http://nexus.focus.fish/nexus/content/repositories/snapshots</focus-pom.distribution.snapshot.url>
-        <focus-pom.distribution.stage.id>focus-stages</focus-pom.distribution.stage.id> 
-        <focus-pom.distribution.stage.name>UnionVms Stage Repository</focus-pom.distribution.stage.name>
-        <focus-pom.distribution.stage.url>http://nexus.focus.fish/nexus/repository/stages</focus-pom.distribution.stage.url>
+        <focus-pom.distribution.release.id>focus.mavencentral.releases</focus-pom.distribution.release.id>
+        <focus-pom.distribution.release.name>Focus Release Repository</focus-pom.distribution.release.name>
+        <focus-pom.distribution.release.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</focus-pom.distribution.release.url>
+        <focus-pom.distribution.snapshot.id>focus.mavencentral.snapshots</focus-pom.distribution.snapshot.id>
+        <focus-pom.distribution.snapshot.name>Focus Snapshot Repository</focus-pom.distribution.snapshot.name>
+        <focus-pom.distribution.snapshot.url>https://oss.sonatype.org/content/repositories/snapshots</focus-pom.distribution.snapshot.url>
 
         <!--Other-->
         <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
@@ -694,48 +691,17 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             </build>
         </profile>
 
-        <!--release-sign-artifacts-required-by-maven-central--> 
+        <!--release-sign-artifacts-required-by-maven-central-->
         <profile>
             <id>release-sign-artifacts-required-by-maven-central</id>
-            <distributionManagement>
-                <repository>
-                    <uniqueVersion>false</uniqueVersion>
-                    <id>focus.mavencentral.releases</id>
-                    <name>Focus Staging Repository</name>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
+            <activation>
+                <property>
+                    <name>ci</name>
+                    <value>true</value>
+                </property>
+            </activation>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                                <configuration>
-                                    <doclint>${javadoc.doclint}</doclint>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>bundle-sources</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                    <goal>test-jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
