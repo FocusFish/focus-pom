@@ -15,7 +15,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
     <modelVersion>4.0.0</modelVersion>
     <groupId>fish.focus.maven</groupId>
     <artifactId>focus-pom</artifactId>
-    <version>2.3</version>
+    <version>2.4</version>
     <packaging>pom</packaging>
     <name>focus-pom</name>
     <description>focus pom, parent for all projects</description>
@@ -45,13 +45,24 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <url>${focus-pom.organizationUrl}</url>
     </organization>
 
+    <developers>
+        <developer>
+          <id>peerik</id>
+          <name>Peter Eriksson</name>
+          <email>peter.eriksson@havochvatten.se</email>
+          <organization>www.havochvatten.se</organization>
+        </developer>
+        <developer>
+          <id>Johanhav</id>
+          <name>Johan Söderblom</name>
+          <email>johan.söderblom@havochvatten.se</email>
+          <organization>www.havochvatten.se</organization>
+        </developer>
+    </developers>
+
     <issueManagement>
         <url>${focus-pom.issueManagementUrl}</url>
     </issueManagement>
-
-    <ciManagement>
-        <url>${focus-pom.ciManagementUrl}</url>
-    </ciManagement>
 
     <!-- ### END Shared setting -->
 
@@ -183,7 +194,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- Corporate projects information (do not overwrite) -->
         <focus-pom.organizationName>FOCUS (Fisheries Open Source Community Software)</focus-pom.organizationName>
         <focus-pom.organizationUrl>http://www.focus.fish</focus-pom.organizationUrl>
-        <focus-pom.ciManagementUrl>https://jenkins.focus.fish</focus-pom.ciManagementUrl>
         <focus-pom.issueManagementUrl>https://focusfish.atlassian.net/</focus-pom.issueManagementUrl>
 
         <!--Enforce (and use)-->
