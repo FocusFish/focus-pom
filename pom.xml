@@ -47,15 +47,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
     <developers>
         <developer>
-          <id>peerik</id>
-          <name>Peter Eriksson</name>
-          <email>peter.eriksson@havochvatten.se</email>
-          <organization>www.havochvatten.se</organization>
-        </developer>
-        <developer>
-          <id>Johanhav</id>
-          <name>Johan Söderblom</name>
-          <email>johan.söderblom@havochvatten.se</email>
+          <id>uvms</id>
+          <name>UnionVMS</name>
+          <email>uvms@havochvatten.se</email>
           <organization>www.havochvatten.se</organization>
         </developer>
     </developers>
