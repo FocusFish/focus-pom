@@ -15,7 +15,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
     <modelVersion>4.0.0</modelVersion>
     <groupId>fish.focus.maven</groupId>
     <artifactId>focus-pom</artifactId>
-    <version>2.5</version>
+    <version>2.6</version>
     <packaging>pom</packaging>
     <name>focus-pom</name>
     <description>focus pom, parent for all projects</description>
@@ -47,15 +47,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
     <developers>
         <developer>
-          <id>peerik</id>
-          <name>Peter Eriksson</name>
-          <email>peter.eriksson@havochvatten.se</email>
-          <organization>www.havochvatten.se</organization>
-        </developer>
-        <developer>
-          <id>Johanhav</id>
-          <name>Johan Söderblom</name>
-          <email>johan.söderblom@havochvatten.se</email>
+          <id>uvms</id>
+          <name>UnionVMS</name>
+          <email>uvms@havochvatten.se</email>
           <organization>www.havochvatten.se</organization>
         </developer>
     </developers>
