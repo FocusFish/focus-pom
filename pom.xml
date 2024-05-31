@@ -212,7 +212,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!--Other-->
         <focus-pom.sonarUrl>https://sonarqube.com</focus-pom.sonarUrl>
-        <focus-pom.maven.gitflow.maven.plugin.version>1.17.0</focus-pom.maven.gitflow.maven.plugin.version>
+        <focus-pom.maven.gitflow.maven.plugin.version>1.21.0</focus-pom.maven.gitflow.maven.plugin.version>
 
         <!-- =================================================== -->
         <!-- IDE specific properties                             -->
