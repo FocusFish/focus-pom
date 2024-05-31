@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ~ Developed with the contribution of the European Commission - Directorate 
-General for Maritime Affairs and Fisheries ~ © European Union, 2015-2016. 
-~ ~ This file is part of the Integrated Fisheries Data Management (IFDM) 
-Suite. The IFDM Suite is free software: you can ~ redistribute it and/or 
-modify it under the terms of the GNU General Public License as published 
-by the ~ Free Software Foundation, either version 3 of the License, or any 
-later version. The IFDM Suite is distributed in ~ the hope that it will be 
-useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
-or ~ FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License 
-for more details. You should have received a ~ copy of the GNU General Public 
+<!-- ~ Developed with the contribution of the European Commission - Directorate
+General for Maritime Affairs and Fisheries ~ © European Union, 2015-2016.
+~ ~ This file is part of the Integrated Fisheries Data Management (IFDM)
+Suite. The IFDM Suite is free software: you can ~ redistribute it and/or
+modify it under the terms of the GNU General Public License as published
+by the ~ Free Software Foundation, either version 3 of the License, or any
+later version. The IFDM Suite is distributed in ~ the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or ~ FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+for more details. You should have received a ~ copy of the GNU General Public
 License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -157,19 +157,19 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!-- # Tool plugins -->
         <focus-pom.maven.dependency.plugin.version>3.1.1</focus-pom.maven.dependency.plugin.version>
-        <focus-pom.maven.enforcer.plugin.version>3.0.0-M2</focus-pom.maven.enforcer.plugin.version>
+        <focus-pom.maven.enforcer.plugin.version>3.5.0</focus-pom.maven.enforcer.plugin.version>
         <focus-pom.maven.ant.plugin.version>1.8</focus-pom.maven.ant.plugin.version>
         <focus-pom.maven.gpg.plugin.version>3.0.1</focus-pom.maven.gpg.plugin.version>
         <focus-pom.maven.release.plugin.version>2.5.3</focus-pom.maven.release.plugin.version>
         <focus-pom.maven.japicmp.plugin.version>0.11.0</focus-pom.maven.japicmp.plugin.version>
 
         <!-- # Outside The Maven Land -->
-        <focus-pom.maven.versions.plugin.version>2.5</focus-pom.maven.versions.plugin.version>                       
+        <focus-pom.maven.versions.plugin.version>2.5</focus-pom.maven.versions.plugin.version>
         <focus-pom.maven.scm.provider.version>2.1.1</focus-pom.maven.scm.provider.version>
 
         <!-- # Maven plugin deps-->
-        <focus-pom.maven.release.plugin.scm.provider.git.version>1.9.5</focus-pom.maven.release.plugin.scm.provider.git.version>      
-        <focus-pom.maven.enforcer.plugin.extra.rules.version>1.2</focus-pom.maven.enforcer.plugin.extra.rules.version>
+        <focus-pom.maven.release.plugin.scm.provider.git.version>1.9.5</focus-pom.maven.release.plugin.scm.provider.git.version>
+        <focus-pom.maven.enforcer.plugin.extra.rules.version>1.8.0</focus-pom.maven.enforcer.plugin.extra.rules.version>
         <focus-pom.maven.site.plugin.wagon.git.version>2.0.4</focus-pom.maven.site.plugin.wagon.git.version>
         <focus-pom.site.github.plugin.version>0.12</focus-pom.site.github.plugin.version>
         <focus-pom.maven.javadoc.plugin.apiviz.version>1.3.2.GA</focus-pom.maven.javadoc.plugin.apiviz.version>
@@ -179,7 +179,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.jacoco.plugin.arquillian.version>1.0.0.Alpha9</focus-pom.jacoco.plugin.arquillian.version>
         <!--focus-pom.maven.jacoco.plugin.asm.version>5.2</focus-pom.maven.jacoco.plugin.asm.version-->
         <focus-pom.site.tattletale.plugin.version>1.2.0.Beta2</focus-pom.site.tattletale.plugin.version>
-        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-GA</focus-pom.site.tattletale.javassist.plugin.version>    
+        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-GA</focus-pom.site.tattletale.javassist.plugin.version>
         <focus-pom.toolchain.plugin.version>1.1</focus-pom.toolchain.plugin.version>
 
         <!-- ========================= -->
@@ -223,7 +223,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
     <build>
         <pluginManagement>
             <plugins>
-                <!-- ============================================================================ --> 
+                <!-- ============================================================================ -->
                 <!-- Maven core plugins order based on http://maven.apache.org/plugins/index.html -->
                 <!-- ============================================================================ -->
 
@@ -271,9 +271,9 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                             <groupId>net.trajano.wagon</groupId>
                             <artifactId>wagon-git</artifactId>
                             <version>${focus-pom.maven.site.plugin.wagon.git.version}</version>
-                        </dependency>                    
-                    </dependencies>                    
-                </plugin>                
+                        </dependency>
+                    </dependencies>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -394,13 +394,13 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                             <artifactId>maven-scm-provider-gitexe</artifactId>
                             <version>${focus-pom.maven.release.plugin.scm.provider.git.version}</version>
                         </dependency>
-                    </dependencies>          
+                    </dependencies>
                 </plugin>
 
 
-                <!-- ============= --> 
+                <!-- ============= -->
                 <!-- Other plugins -->
-                <!-- ============= --> 
+                <!-- ============= -->
                 <!-- Test -->
                 <plugin>
                     <groupId>org.jacoco</groupId>
@@ -465,7 +465,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <configuration>
                         <allowSnapshots>true</allowSnapshots>
                     </configuration>
-                </plugin>					
+                </plugin>
                 <plugin>
                     <groupId>com.amashchenko.maven.plugin</groupId>
                     <artifactId>gitflow-maven-plugin</artifactId>
@@ -529,7 +529,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                                         </requireJavaVersion>
                                     </rules>
                                 </configuration>
-                            </execution>                        
+                            </execution>
                         </executions>
                     </plugin>
                 </plugins>
@@ -566,7 +566,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                                         </enforceBytecodeVersion>
                                     </rules>
                                 </configuration>
-                            </execution>                        
+                            </execution>
                         </executions>
                     </plugin>
                 </plugins>
@@ -608,7 +608,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     </plugin>
                 </plugins>
             </build>
-        </profile>        
+        </profile>
 
 
         <!-- enforce-encoding -->
@@ -668,14 +668,14 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                                         </requireEncoding>
                                     </rules>
                                 </configuration>
-                            </execution>              
+                            </execution>
                         </executions>
                     </plugin>
                 </plugins>
             </build>
         </profile>
 
-        <!--jacoco test covarge--> 
+        <!--jacoco test covarge-->
         <profile>
             <id>jacoco</id>
             <build>
@@ -689,7 +689,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <argLine>@{surefireArgLine}</argLine>
-                        </configuration>                        
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -762,7 +762,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                    </plugin>           
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-report-plugin</artifactId>
@@ -828,7 +828,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                                 </reports>
                             </reportSet>
                         </reportSets>
-                    </plugin>                    
+                    </plugin>
                 </plugins>
             </reporting>
         </profile>
@@ -856,7 +856,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                         </executions>
                     </plugin>
                 </plugins>
-            </build>			
+            </build>
         </profile>
 
         <profile>
@@ -867,7 +867,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
             <properties>
                 <javadoc.opts />
             </properties>
-        </profile> 
+        </profile>
 
         <profile>
             <id>toolchain</id>
