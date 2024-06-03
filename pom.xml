@@ -147,7 +147,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.jar.plugin.version>3.1.2</focus-pom.maven.jar.plugin.version>
         <focus-pom.maven.war.plugin.version>3.2.3</focus-pom.maven.war.plugin.version>
         <focus-pom.maven.source.plugin.version>3.1.0</focus-pom.maven.source.plugin.version>
-        <focus-pom.maven.assembly.plugin.version>3.1.0</focus-pom.maven.assembly.plugin.version>
+        <focus-pom.maven.assembly.plugin.version>3.7.1</focus-pom.maven.assembly.plugin.version>
 
         <!-- # Reporting plugins (only used subset) -->
         <focus-pom.maven.javadoc.plugin.version>3.1.1</focus-pom.maven.javadoc.plugin.version>
