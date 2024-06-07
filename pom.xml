@@ -137,7 +137,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.failsafe.plugin.version>2.22.2</focus-pom.maven.failsafe.plugin.version>
         <focus-pom.maven.install.plugin.version>3.0.0-M1</focus-pom.maven.install.plugin.version>
         <focus-pom.maven.resources.plugin.version>3.1.0</focus-pom.maven.resources.plugin.version>
-        <focus-pom.maven.site.plugin.version>3.8.2</focus-pom.maven.site.plugin.version>
+        <focus-pom.maven.site.plugin.version>3.12.1</focus-pom.maven.site.plugin.version>
         <focus-pom.maven.surefire.plugin.version>3.2.5</focus-pom.maven.surefire.plugin.version>
         <focus-pom.maven.verifier.plugin.version>1.1</focus-pom.maven.verifier.plugin.version>
 
