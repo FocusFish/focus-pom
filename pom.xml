@@ -179,7 +179,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.jacoco.plugin.arquillian.version>1.0.0.Alpha9</focus-pom.jacoco.plugin.arquillian.version>
         <!--focus-pom.maven.jacoco.plugin.asm.version>5.2</focus-pom.maven.jacoco.plugin.asm.version-->
         <focus-pom.site.tattletale.plugin.version>1.2.0.Beta2</focus-pom.site.tattletale.plugin.version>
-        <focus-pom.site.tattletale.javassist.plugin.version>3.22.0-GA</focus-pom.site.tattletale.javassist.plugin.version>
+        <focus-pom.site.tattletale.javassist.plugin.version>3.30.2-GA</focus-pom.site.tattletale.javassist.plugin.version>
         <focus-pom.toolchain.plugin.version>1.1</focus-pom.toolchain.plugin.version>
 
         <!-- ========================= -->
