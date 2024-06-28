@@ -151,7 +151,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!-- # Reporting plugins (only used subset) -->
         <focus-pom.maven.javadoc.plugin.version>3.7.0</focus-pom.maven.javadoc.plugin.version>
-        <focus-pom.maven.jxr.plugin.version>2.5</focus-pom.maven.jxr.plugin.version>
+        <focus-pom.maven.jxr.plugin.version>3.4.0</focus-pom.maven.jxr.plugin.version>
         <focus-pom.maven.project-info-reports.plugin.version>3.6.1</focus-pom.maven.project-info-reports.plugin.version>
         <focus-pom.maven.surefire-report.plugin.version>${focus-pom.maven.surefire.plugin.version}</focus-pom.maven.surefire-report.plugin.version>
 
