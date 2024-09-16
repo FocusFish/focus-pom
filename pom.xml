@@ -159,7 +159,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.dependency.plugin.version>3.8.0</focus-pom.maven.dependency.plugin.version>
         <focus-pom.maven.enforcer.plugin.version>3.5.0</focus-pom.maven.enforcer.plugin.version>
         <focus-pom.maven.ant.plugin.version>1.8</focus-pom.maven.ant.plugin.version>
-        <focus-pom.maven.gpg.plugin.version>3.2.5</focus-pom.maven.gpg.plugin.version>
+        <focus-pom.maven.gpg.plugin.version>3.2.6</focus-pom.maven.gpg.plugin.version>
         <focus-pom.maven.release.plugin.version>2.5.3</focus-pom.maven.release.plugin.version>
         <focus-pom.maven.japicmp.plugin.version>0.23.0</focus-pom.maven.japicmp.plugin.version>
 
