@@ -169,7 +169,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
         <!-- # Maven plugin deps-->
         <focus-pom.maven.release.plugin.scm.provider.git.version>2.1.0</focus-pom.maven.release.plugin.scm.provider.git.version>
-        <focus-pom.maven.enforcer.plugin.extra.rules.version>1.9.0</focus-pom.maven.enforcer.plugin.extra.rules.version>
+        <focus-pom.maven.enforcer.plugin.extra.rules.version>1.10.0</focus-pom.maven.enforcer.plugin.extra.rules.version>
         <focus-pom.maven.site.plugin.wagon.git.version>2.0.4</focus-pom.maven.site.plugin.wagon.git.version>
         <focus-pom.site.github.plugin.version>0.12</focus-pom.site.github.plugin.version>
         <focus-pom.maven.javadoc.plugin.apiviz.version>1.3.2.GA</focus-pom.maven.javadoc.plugin.apiviz.version>
