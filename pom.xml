@@ -88,6 +88,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <!-- Set compiler source and target versions (m-compiler-p) -->
         <maven.compiler.target>${focus-pom.java.version}</maven.compiler.target>
         <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
+        <maven.compiler.release>${focus-pom.java.version}</maven.compiler.release>
 
         <!-- Set compiler tveo be more verbose (m-compiler-p) -->
         <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
