@@ -60,20 +60,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
 
     <!-- ### END Shared setting -->
 
-    <distributionManagement>
-        <repository>
-            <id>${focus-pom.distribution.release.id}</id>
-            <name>${focus-pom.distribution.release.name}</name>
-            <url>${focus-pom.distribution.release.url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>${focus-pom.distribution.snapshot.id}</id>
-            <name>${focus-pom.distribution.snapshot.name}</name>
-            <url>${focus-pom.distribution.snapshot.url}</url>
-        </snapshotRepository>
-        <!-- Stage intentionally left out!-->
-    </distributionManagement>
-
     <properties>
         <!-- ================= -->
         <!-- Maven default properties -->
@@ -135,6 +121,7 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.maven.clean.plugin.version>3.5.0</focus-pom.maven.clean.plugin.version>
         <focus-pom.maven.compiler.plugin.version>3.14.0</focus-pom.maven.compiler.plugin.version>
         <focus-pom.maven.deploy.plugin.version>3.1.4</focus-pom.maven.deploy.plugin.version>
+        <focus-pom.maven.central.publishing.plugin.version>0.8.0</focus-pom.maven.central.publishing.plugin.version>
         <focus-pom.maven.failsafe.plugin.version>3.5.3</focus-pom.maven.failsafe.plugin.version>
         <focus-pom.maven.install.plugin.version>3.1.4</focus-pom.maven.install.plugin.version>
         <focus-pom.maven.resources.plugin.version>3.3.1</focus-pom.maven.resources.plugin.version>
@@ -204,6 +191,12 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
         <focus-pom.public.context.site.url>${project.artifactId}</focus-pom.public.context.site.url>
 
         <!--Distribution-->
+        <!--
+            With OSSRH shutting down and the new portal / API being the main target, the following properties have been
+            repurposed to be used for publishing to non-central artifactory. For maven central the default URLs from the
+            central-publishing-maven-plugin plugin are used.
+            Enable with flag -Dnon-central
+         -->
         <focus-pom.distribution.release.id>focus.mavencentral.releases</focus-pom.distribution.release.id>
         <focus-pom.distribution.release.name>Focus Release Repository</focus-pom.distribution.release.name>
         <focus-pom.distribution.release.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</focus-pom.distribution.release.url>
@@ -737,6 +730,53 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+
+        <profile>
+            <id>maven-central</id>
+            <activation>
+                <property>
+                    <name>!non-central</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${focus-pom.maven.central.publishing.plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <!-- Skip manually logging in to the portal to release the deployment -->
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>non-central-with-core-deploy</id>
+            <activation>
+                <property>
+                    <name>non-central</name>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>${focus-pom.distribution.release.id}</id>
+                    <name>${focus-pom.distribution.release.name}</name>
+                    <url>${focus-pom.distribution.release.url}</url>
+                </repository>
+                <snapshotRepository>
+                    <id>${focus-pom.distribution.snapshot.id}</id>
+                    <name>${focus-pom.distribution.snapshot.name}</name>
+                    <url>${focus-pom.distribution.snapshot.url}</url>
+                </snapshotRepository>
+                <!-- Stage intentionally left out!-->
+            </distributionManagement>
         </profile>
 
         <!--site-reports-->
