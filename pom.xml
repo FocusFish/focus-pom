@@ -750,7 +750,6 @@ License along with the IFDM Suite. If not, see <http://www.gnu.org/licenses />. 
                             <publishingServerId>central</publishingServerId>
                             <!-- Skip manually logging in to the portal to release the deployment -->
                             <autoPublish>true</autoPublish>
-                            <waitUntil>published</waitUntil>
                         </configuration>
                     </plugin>
                 </plugins>
